@@ -2,7 +2,7 @@ oms: 1
 
 info:
   version: 1.0.0
-  title: Your microservice
+  title: Your Microservice with Events
   description: Describe your microservice
   license:
     name: MIT
@@ -10,7 +10,7 @@ info:
 
 lifecycle:
   startup:
-    command: ['node', '/app/src/index.js']
+    command: ["node", "/app/src/index.js"]
 
 health:
   http:
@@ -18,18 +18,48 @@ health:
     port: 8080
 
 actions:
-  message:
-    help: Insert a "name" into simple greeting text phrase
-    http:
-      path: /
-      method: post
-      port: 8080
+  listen:
+    help: Subscribe to events
+    events:
+      heartbeat:
+        help: Subscribe to heartbeat events from different users
+        http:
+          port: 8080
+          subscribe:
+            path: /events
+            method: post
+            contentType: application/json
+        arguments:
+          user:
+            type: string
+            in: requestBody
+        output:
+          type: object
+          contentType: application/json
+          properties:
+            user:
+              type: string
+            time:
+              type: string
+  publish:
+    help: Publish an event to your service
     arguments:
-      name:
-        help: The "name" to insert into the greeting text phrase.
+      eventName:
         type: string
-        required: false
         in: requestBody
-    output:
+        required: true
+      user:
+        help: Select to which user to send the event
+        type: string
+        in: requestBody
+      data:
+        type: map
+        in: requestBody
+        required: true
+    http:
+      port: 8080
+      method: post
       contentType: application/json
-      type: map
+      path: /publish
+    output:
+      type: none

@@ -8,7 +8,8 @@
     "dev": "nodemon src/index.js",
     "start": "node src/index.js",
     "commit": "npx git-cz",
-    "lint": "standard"
+    "lint": "standard",
+    "test": "node test/all.js"
   },
   "author": "Matthew Hudson",
   "license": "MIT",
@@ -16,12 +17,17 @@
     "url": "https://github.com/matthewhudson/oms-nodejs/issues"
   },
   "homepage": "https://github.com/matthewhudson/oms-nodejs#readme",
-  "keywords": ["microservice", "oms"],
+  "keywords": [
+    "microservice",
+    "oms"
+  ],
   "dependencies": {
     "body-parser": "1.19.0",
-    "express": "4.17.1"
+    "express": "4.17.1",
+    "request": "^2.88.0"
   },
   "devDependencies": {
+    "@microservices/oms": "^0.16.3",
     "cz-conventional-changelog": "3.0.2",
     "nodemon": "1.19.4",
     "standard": "14.3.1"
