@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - '12'
+  - "12"
 
 services:
   - docker
@@ -10,6 +10,4 @@ before_install:
 
 script:
   - npx oms build
-  - |
-    output="$(npx oms run --silent message -a name="World" | jq -c .)"
-    if [ "$output" != '{"message":"Hello World"}' ] ; then echo "$output"; exit 1; fi
+  - npm test
