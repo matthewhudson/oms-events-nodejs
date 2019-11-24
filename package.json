@@ -24,10 +24,10 @@
   "dependencies": {
     "body-parser": "1.19.0",
     "express": "4.17.1",
-    "request": "^2.88.0"
+    "request": "2.88.0"
   },
   "devDependencies": {
-    "@microservices/oms": "^0.16.3",
+    "@microservices/oms": "0.16.3",
     "cz-conventional-changelog": "3.0.2",
     "nodemon": "1.19.4",
     "standard": "14.3.1"
