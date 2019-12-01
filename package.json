@@ -27,7 +27,7 @@
     "request": "2.88.0"
   },
   "devDependencies": {
-    "@microservices/oms": "0.16.3",
+    "@microservices/oms": "0.16.6",
     "cz-conventional-changelog": "3.0.2",
     "nodemon": "2.0.1",
     "standard": "14.3.1"
